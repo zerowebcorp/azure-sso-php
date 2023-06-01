@@ -1,0 +1,17 @@
+{
+    "name": "zeroweb/azuresso",
+    "description": "Azure SSO Integration Package",
+    "keywords": ["azure", "sso", "azure sso"] ,
+    "homepage": "https://github.com/zerowebcorp/azure-sso-php",
+    "license": "Apache-2.0",
+    "require": {
+        "php": ">=7.4",
+        "symfony/http-client": "^5.4",
+        "symfony/http-foundation": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "ZeroWeb\\AzureSSO\\": "src/"
+        }
+    }
+}
