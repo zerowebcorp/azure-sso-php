@@ -22,17 +22,18 @@ $request = Request::createFromGlobals();
 ## $azureCreds = array of the credenetials
 
 $config = [
-     'clientId' => $azureCreds['client_id'],
-    'clientSecret' => $azureCreds['client_secret'],
-    'tenantId' => $azureCreds['tenant_id'],
+     'clientId' => 'client id',
+    'clientSecret' => 'client secret',
+    'tenantId' => 'tenant id',
     'scope' => 'User.Read GroupMember.Read.All',
     'returnUrl' => 'https://localhost/sso',
-    'returnGroups' => true,
+    'returnGroups' => true, // set false to not return the user groups. If set to true, requires GroupMemeber.Read.All scope
 ];
 
 $sso = new AzureSSO($config, $request);
 try {
-    $sso->authenticate();
+    $sso->authenticate(); 
+    // The user is authenticated at this point and the session contains the auth data.
 } catch (Exception $e) {
     echo ("There was a problem with authentication." . $e->getMessage());
 }
