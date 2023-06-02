@@ -5,9 +5,9 @@
     "homepage": "https://github.com/zerowebcorp/azure-sso-php",
     "license": "Apache-2.0",
     "require": {
-        "php": ">=7.4",
-        "symfony/http-client": "^5.4",
-        "symfony/http-foundation": "^5.4"
+        "php": ">=8.1",
+        "symfony/http-client": "^6.3",
+        "symfony/http-foundation": "^6.3"
     },
     "autoload": {
         "psr-4": {

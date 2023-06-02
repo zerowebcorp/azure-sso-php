@@ -31,15 +31,6 @@ class AzureSSO
             return $_SESSION[AzureSSO::sessionKey]['auth']['access_token'];
         }
     }
-
-    /**
-     * @param mixed $token
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-    }
-
     public function authenticate()
     {
         if (($this->request->getMethod() === 'GET') && empty($this->request->get('code'))) {
