@@ -2,6 +2,7 @@
 
 namespace ZeroWeb;
 
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpClient\CurlHttpClient;
 
@@ -63,7 +64,7 @@ class AzureSSO
                     header("Location: " . $this->request->getPathInfo());
                     exit;
                 } else {
-                    throw  new Exception($content['error_description']);
+                    throw new Exception($content['error_description']);
                 }
             } else {
                 $_SESSION[AzureSSO::sessionKey] = [];
