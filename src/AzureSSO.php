@@ -3,8 +3,8 @@
 namespace ZeroWeb;
 
 use Exception;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpClient\CurlHttpClient;
+use Symfony\Component\HttpFoundation\Request;
 
 class AzureSSO
 {
@@ -32,6 +32,7 @@ class AzureSSO
             return $_SESSION[AzureSSO::sessionKey]['auth']['access_token'];
         }
     }
+
     public function authenticate()
     {
         if (($this->request->getMethod() === 'GET') && empty($this->request->get('code'))) {
@@ -103,6 +104,7 @@ class AzureSSO
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
+     * @throws Exception
      */
     public function getGroups($url = null)
     {
@@ -125,9 +127,8 @@ class AzureSSO
                     $this->groups[] = $group['displayName'];
                 }
             }
-            $nextLink = $content['@odata.nextLink'];
-            if (!empty($nextLink)) {
-                $this->getGroups($nextLink);
+            if (!empty($content['@odata.nextLink'])) {
+                $this->getGroups($content['@odata.nextLink']);
             }
         }
         return $this->groups;
